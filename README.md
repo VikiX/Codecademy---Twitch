@@ -107,7 +107,7 @@ limit 10;
 |DK|2909|
 |GR|2885|
 
-##The player column contains the source the user is using to view the stream (site, iphone, android, etc). Create a list of players and their number of streamers.
+## The player column contains the source the user is using to view the stream (site, iphone, android, etc). Create a list of players and their number of streamers.
 ```
 SELECT player, COUNT(*) as num_of_players
 FROM stream
@@ -132,3 +132,59 @@ ORDER BY 2 DESC;
 |nvidia shield|3|
 |ouya|3|
 |android_pip|2|
+
+## Create a new column named genre for each of the games. Group the games into their genres: Multiplayer Online Battle Arena (MOBA), First Person Shooter (FPS), Survival, and Other.
+```
+select distinct game, 
+(case when game = 'League of Legends' or game ='Dota 2' or game = 'Heroes of the Storm' then 'MOBA'
+ when game = 'Counter-Strike: Global Offensive' then 'FPS'
+ when game = 'DayZ' or game = 'ARK: Survival Evolved' then 'Survival'
+else 'Other' end) as 'genre'
+from stream
+where game is not NULL
+order by genre;
+```
+
+|game|genre|
+|-------|------|
+|Counter-Strike: Global Offensive|FPS|
+|League of Legends|MOBA|
+|Dota 2|MOBA|
+|Heroes of the Storm|MOBA|
+|Hearthstone: Heroes of Warcraft|Other|
+|The Binding of Isaac: Rebirth|Other|
+|Agar.io|Other|
+|Gaming Talk Shows|Other|
+|Rocket League|Other|
+|World of Tanks|Other|
+|SpeedRunners|Other|
+|Breaking Point|Other|
+|Duck Game|Other|
+|Devil May Cry 4: Special Edition|Other|
+|Block N Load|Other|
+|Fallout 3|Other|
+|Batman: Arkham Knight|Other|
+|Reign Of Kings|Other|
+|The Witcher 3: Wild Hunt|Other|
+|The Elder Scrolls V: Skyrim|Other|
+|Super Mario Bros.|Other|
+|H1Z1|Other|
+|The Last of Us|Other|
+|Depth|Other|
+|Mortal Kombat X|Other|
+|Senran Kagura: Estival Versus|Other|
+|The Sims 4|Other|
+|You Must Build A Boat|Other|
+|Choice Chamber|Other|
+|Music|Other|
+|Risk of Rain|Other|
+|Grand Theft Auto V|Other|
+|Besiege|Other|
+|Super Mario Bros. 3|Other|
+|Hektor|Other|
+|Bridge Constructor Medieval|Other|
+|Lucius|Other|
+|Blackjack|Other|
+|Cities: Skylines|Other|
+|DayZ|Survival|
+|ARK: Survival Evolved|Survival|
