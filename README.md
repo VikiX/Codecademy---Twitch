@@ -106,3 +106,29 @@ limit 10;
 |NL|3213|
 |DK|2909|
 |GR|2885|
+
+##The player column contains the source the user is using to view the stream (site, iphone, android, etc). Create a list of players and their number of streamers.
+```
+SELECT player, COUNT(*) as num_of_players
+FROM stream
+GROUP BY 1
+ORDER BY 2 DESC;
+```
+|player| num_of_players|
+|-------|------|
+|site|246115|
+|iphone_t|100689|
+|android|93508|
+|ipad_t|53646|
+|embed|19819|
+|xbox_one|4863|
+|home|3479|
+|frontpage|1567|
+|amazon|1155|
+|xbox360|985|
+|roku|233|
+|chromecast|149|
+|facebook|83|
+|nvidia shield|3|
+|ouya|3|
+|android_pip|2|
